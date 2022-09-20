@@ -5,7 +5,7 @@ int main(){
     char ch[20];
     char *p, *index;
 
-    scanf("%s", ch);
+    scanf("%s", fch);
 
     for(p = ch; p < ch + strlen(ch); p++)    {
         if(*p == '#'){

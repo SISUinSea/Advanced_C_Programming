@@ -11,7 +11,7 @@ int main() {
         scanf("%d", p);
     }
 
-    printf("%d", arrsum(&arr[s], &arr[e]));
+    printf("%d", arrsum(arr+s, arr+e));
 
     return 0;
 }
