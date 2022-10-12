@@ -1,29 +1,16 @@
-// #include <stdio.h>
-
-// int main() {
-    
-//     return 0;
-// }
-
 #include <stdio.h>
 #include <string.h>
 
 int main() {
-    char a[21], b[21], tmp[61];
-    scanf("%s", a);
-    // getchar();
-    scanf("%s", b);
+    struct student {
+        int id;
+        char name[8];
+        double grade;
+    };
 
-    printf("%s\n%s", a, b);
-
-    // printf("%d %d\n",(int) strlen(a),(int) strlen(b));
-    // strcmp(a, b) < 0 ? printf("%s\n",a) : printf("%s\n", b);
-
-
-    // strcpy(tmp, a);
-    // strcat(tmp, b);
-    // strcat(tmp, a);
-
-    // printf("%s\n", tmp);
+    struct student ast[3];
+    ast[0].id = 10;
+    strcpy(str[0].name, "Tom");
+    ast[0].grade = 3.2;
     return 0;
 }
