@@ -3,21 +3,29 @@
 #include <string.h>
 
 int main(){
-    int n;
-    scanf("%d", &n);
+    int n, i;
     char tmp[100+1];
-    char **p = (char **) malloc(n*sizeof(char*));
-
-    int i;
+    scanf("%d", &n);
     getchar();
-    for(i = 0; i<n; i++) {
+    char **p = (char **) malloc(n*sizeof(char*));
+    if(p == NULL) {
+        printf("malloc is null\n");
+        return -1;
+
+    }
+
+    for(i = 0; i<n; i++){
         gets(tmp);
-        // p[i] = (char *) malloc((strlen(tmp) + 1) * sizeof(char));
-        *(p+i) = (char *) malloc((strlen(tmp)+1) * sizeof(char));
+        p[i] = (char *) malloc((strlen(tmp)+1) * sizeof(char));
+        if(p[i] == NULL) {
+            printf("Malloc is null");
+            return -1;
+
+        }
         strcpy(p[i], tmp);
     }
 
     for(i = 0; i<n; i++) puts(p[i]);
-    for(i = 0;i < n; i++) free(p[i]);
-    free(p);
+    for(i = 0; i<n; i++) free(p[i]);
+    free(p[i]);
 }

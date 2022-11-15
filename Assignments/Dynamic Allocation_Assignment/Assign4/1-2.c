@@ -6,6 +6,9 @@ typedef struct st {
     char *str;
     int cnt1;
     int cnt2;
+    int num;
+    int pos;
+    int result;
 } st;
 
 int main(){
@@ -32,6 +35,13 @@ int main(){
     for(i = 0;i <n ;i++) {
         char *c;
         for(c = (p+i)->str; *c; c++) {
+            ((p+i)->cnt2) ++;
+            // number finding : break if number has founded.
+            if(*c >= '0' && *c <= '9'){
+                (p+i)->num = *c - '0';
+                (p+i)->pos = c - (p+i)->str +1;
+                continue;
+            }
             if(*c!='A' && *c!='a' && 
             *c!='E' && *c!='e' && 
             *c!='I' && *c!='i' && 
@@ -39,18 +49,20 @@ int main(){
             *c!='U' && *c!='u'){
                 ((p+i)->cnt1)++;
             }
-            ((p+i)->cnt2)++;
         }
 
-        // printf("---2 : %s %d %d\n", (p+i)->str, (p+i)->cnt1, (p+i)->cnt2);
+        (p+i)->result = (p+i)->cnt1 *(p+i)->cnt2 * (p+i)->num * (p+i)->pos;
+
+        
+
+        // printf("---2 : %s %d %d %d %d %d\n", (p+i)->str, (p+i)->cnt1, (p+i)->cnt2, (p+i)->num, (p+i)->pos, (p+i)->result);
     }
 
     // 3
     int j;
     for(i = 0;i < n;i++) {
         for(j = 1; j<n; j++){
-            if( (p+j-1)->cnt1 < (p+j)->cnt1 || 
-            (p+j-1)->cnt1 == (p+j)->cnt1 && (p+j-1)->cnt2 < (p+j)->cnt2){
+            if( (p+j-1)->result < (p+j)->result ){
                 st newst;
                 newst = *(p+j-1);
                 *(p+j-1) = *(p+j);
@@ -60,13 +72,16 @@ int main(){
     }
 
     for(i = 0;i <n; i++) puts((p+i)->str);
+
+    for(i = 0; i< n; i++) free((p+i)->str);
+    free(p);
 }
 
 /*
 5
-History
-Politics
-DonQuixote
-LaPeste
-Chaos
+His0tory
+3Politics
+2DonQuixote
+LaPest9e
+Chaos5
 */

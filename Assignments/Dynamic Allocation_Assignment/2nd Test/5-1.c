@@ -30,26 +30,28 @@ int main(){
     // for(int i = 0; i<wi; i++) printf("dbg1 --- %s\n", word[i]);
 
     //2 3
-    int blen = strlen(b);
-    char *ap;
-    char t[100+1];
-    for(int i = 0; i<wi; i++) {
-        for(ap = word[i]; *ap; ap++){
-            if(strncmp(b, ap, blen) == 0){
-                // strcpy(t, ap);
+    char tmp[100+1];
+    int blen = (int)strlen(b);
+    for(int i = 0;i <wi; i++) {
+        char *ap;
+        for(ap = word[i]; ap < word[i] + strlen(word[i]); ap++){
+            if(strncmp(ap, b, blen) == 0){
+                strcpy(tmp, "");
+                strncpy(tmp, word[i], ap - word[i]);
+                strcat(tmp, c);
+                // if( strcmp(tmp, "") != 0 )printf("%s : end dbg... \n", tmp);
+                strcpy(word[i], "");
+                strcat(word[i], tmp);
 
-                // strncpy(ap, t, )
-                // strcat(ap, c);
-                // strcat(ap, t+blen);
-                
-                    printf("dbg2 ---");
-                puts(ap);
-                ap+=blen-1;
             }
         }
     }
+
+    for(int i = 0; i<wi; i++ ) puts(word[i]);
 }
 
 /*
 I have a pen. I have an applepen. PPAP.
+pen
+mouse
 */
