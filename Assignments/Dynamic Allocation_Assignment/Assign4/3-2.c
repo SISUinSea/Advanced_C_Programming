@@ -86,13 +86,14 @@ int main(){
     }
 
     for(i = 0; i< n; i++) {
+        
         stu[i].avg = 0;
         for(int j = 0; j < stu[i].numSubject; j++){
             stu[i].avg += stu[i].psub[j].score;
         }
-        stu[i].avg /= stu[i].numSubject;
+        stu[i].avg /= (double)stu[i].numSubject;
     }
 
-    for(i = 0 ; i< n; i++) printf("%s %s %s \n", (stu+i)->name, stu[i].id, stu[i].psub[0].name);
+    for(i = 0 ; i< n; i++) printf("%s %s %.2lf \n", (stu+i)->name, stu[i].id, stu[i].avg);
 }
 
